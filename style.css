@@ -1,131 +1,102 @@
-/* --- CONFIGURACIÓN GLOBAL --- */
+/* --- 1. CONFIGURACIÓN GLOBAL --- */
 body {
-    background-color: #161316;
+    background-color: #161316; /* Gris muy oscuro base */
     color: #F6F5F4;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', sans-serif; /* Tu fuente principal */
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
 }
 
-/* --- ESCALA TIPOGRÁFICA FIGMA --- */
-h1 { font-size: 70px; line-height: 1.2; font-weight: 700; } 
-h2 { font-size: 48px; line-height: 1.2; font-weight: 700; } 
-h5 { font-size: 25px; line-height: 1.2; font-weight: 500; } 
-h6 { font-size: 20px; line-height: 1.2; font-weight: 400; }
+/* --- 2. ESCALA TIPOGRÁFICA FIGMA (Outfit) --- */
+h1 { font-size: 70px; line-height: 1.2; font-weight: 700; } /* Nombre */
+h2 { font-size: 48px; line-height: 1.2; font-weight: 700; } /* Título de sección */
+h5 { font-size: 25px; line-height: 1.2; font-weight: 500; } /* Subtítulo hero */
+h6 { font-size: 20px; line-height: 1.2; font-weight: 400; } /* Texto sobre mí */
+li, .btn-custom { font-size: 16px; line-height: 1.6; } /* Body */
 
-/* Texto base para listas y botones */
-li, .btn-custom { 
-    font-size: 16px; 
-    line-height: 1.6; /* 160% legibilidad */
-    font-family: 'Roboto', sans-serif; 
-}
-
-/* --- HERO INICIAL --- */
+/* --- 3. SECCIÓN INICIO (Hero) - TOTALMENTE CENTRADA --- */
 .inicio {
+    /* Fondo con imagen que cubre todo */
     background-image: url("./assets/img/fondo.png"); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+
+    min-height: 100vh; /* Ocupa toda la pantalla */
+
+    /* Centrado Flexbox (el "Auto-Layout" de CSS) */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: center;      /* Centra el bloque entero horizontalmente */
+    justify-content: center;   /* Centra el bloque entero verticalmente */
+    text-align: center;       /* Centra las líneas de texto dentro del bloque */
     padding: 20px;
 }
 
 .inicio h1 { margin-bottom: 10px; }
+.inicio h5 { margin-bottom: 30px; } /* Espacio antes del botón */
 
-/* Botón Hablemos */
+/* Botón personalizado de Bootstrap */
 .btn-custom {
-    background-color: #51B4CD;
+    background-color: #51B4CD; /* Tu celeste identitario */
     color: #FFFFFF !important;
     padding: 12px 32px;
-    border-radius: 50px;
+    border-radius: 50px;       /* Redondeado total */
     text-decoration: none;
     font-weight: 500;
-    margin-top: 24px;
     border: none;
-    transition: 0.3s;
+    transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
-.btn-custom:hover { background-color: #3e8da1; }
+.btn-custom:hover {
+    background-color: #3e8da1; /* Un tono más oscuro al pasar el mouse */
+}
 
-/* --- SECCIÓN SOBRE MÍ --- */
+
+
+/* Este es el bloque que da el color negro de borde a borde */
 .sobre-mi-container {
-    background-color: #0B090B; /* Fondo diferenciado */
-    padding: 120px 10%;
+    background-color: #0B090B; 
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    display: flex;
+    justify-content: center; /* Centra el contenedor de texto internamente */
 }
 
-.titulo-seccion {
-    margin-bottom: 40px;
+/* Este es el bloque que limita el texto y mantiene la alineación */
+.contenedor-interior {
+    width: 100%;
+    max-width: 1440px; /* Tu ancho máximo de Figma */
+    padding: 120px 10%; /* Mantiene el aire lateral */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el texto a la izquierda */
 }
 
 .sobre-mi-container h6 {
-    max-width: 900px; /* Evita líneas demasiado largas */
+    max-width: 900px; /* Evita que las líneas de texto sean infinitas */
+    text-align: left;
 }
 
-/* --- SECCIÓN HABILIDADES --- */
-.habilidades-container {
-    padding: 120px 10%;
-    max-width: 1440px;
-    margin: 0 auto;
-}
 
-.habilidades-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: flex-start; /* Alineación a la izquierda */
-}
 
-/* CARDS CON TAMAÑO DINÁMICO (Opción Flex inicial) */
-.card-habilidad {
-    flex: 1 1 calc(33.333% - 24px); /* 3 columnas en Desktop */
-    min-width: 320px; /* No se achican como chicle */
-    border: 1px solid #51B4CD;
-    border-radius: 16px;
-    padding: 40px;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-}
 
-.icon-container {
-    width: 48px; height: 48px;
-    background-color: rgba(81, 180, 205, 0.1);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 24px; color: #51B4CD; font-size: 24px;
-}
-
-.card-habilidad h5 { 
-    margin-bottom: 20px; 
+.titulo-seccion {
+    margin-bottom: 40px;
     color: #F6F5F4;
+    text-align: left;         /* <-- Forzamos el título a la izquierda */
 }
 
-.card-habilidad ul { list-style: none; padding: 0; margin: 0; }
-
-.card-habilidad li { 
-    margin-bottom: 12px; 
-    padding-left: 20px; 
-    position: relative; 
+/* --- 5. SECCIÓN SOBRE MÍ (Ajustes finales) --- */
+.sobre-mi-container {
+    background-color: #0B090B; /* Fondo negro absoluto para separar */
 }
 
-.card-habilidad li::before { 
-    content: "•"; color: #51B4CD; position: absolute; left: 0; 
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 834px) {
-    .card-habilidad { flex: 1 1 calc(50% - 24px); } /* 2 columnas en Tablet */
-    h1 { font-size: 56px; }
-    h2 { font-size: 38px; }
-}
-
-@media (max-width: 420px) {
-    .card-habilidad { flex: 1 1 100%; } /* 1 columna en Celular */
-    .habilidades-container, .sobre-mi-container { padding: 80px 20px; }
-    h1 { font-size: 48px; }
+.texto-sobre-mi {
+    max-width: 900px;         /* Limita el ancho para una lectura profesional */
+    margin: 0;
+    text-align: left;         /* <-- Forzamos el párrafo a la izquierda */
+    color: #F6F5F4;
+    line-height: 1.6;         /* 160% legibilidad */
 }
